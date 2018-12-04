@@ -2,7 +2,7 @@
 
 Q1) Mountain Car Policy using No learning:
 
-
+Mountain Car has a state space of size 2 which represent [position, velocity] and an action space of 3 which represent [left push, neutral, right push]. Since the car is underpowered the car cannot reach the hill just by accelerating since it would be acting against the gravity. Hence the idea is to back up the car against the rear hill and gain momentum. Now the car can gain momentum by applying full speed to go up the hill even if it is acting against the gravity.
 
 
 
@@ -20,10 +20,15 @@ Q3) Mountain Car using Cross-Entropy method
 Inspired by the Cross-Entropy method taught in class (Github repo schneider128k). First, we initialize the hyperparameters according to the mountain car environment. Since the state space is a vector of 
 [position, velocity], we set the state size to 2. The MountainCar-v0 has a discrete action space which is a vector of [0,1,2] where 0 represents push left, 1 represents No push and 2 represents push right. Hence, we set the size of the action size to 3. Maximum episodes are set to 100 and maximum steps are set to 200 since it is one of the terminal states for an episode. We set the input layer as the states [position, velocity] and feed them to a fully connected layer of size 128. This layer is then fed to another fully connected layer of size of the action space. We apply softmax regression on this logits to get the action probabilities. We get one hot action vector using tf.one_hot()after which we apply tf.nn.softmax_cross_entropy_with_logits_v2()on the logits to get the cross_entropy. We use reduce_mean() on this to get cost on which we use AdamOptimizer and minimize the cost. After training this network and testing it did not converge with the total reward being -200.
 Total reward: -200.0
+
+
 Total reward: -200.0
 Total reward: -200.0
+
 Total reward: -200.0
+
 Total reward: -200.0
+
 Total reward: -200.0
 
 
